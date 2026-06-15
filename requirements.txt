@@ -13,3 +13,5 @@ groq
 
 #FastAPI
 fastapi
+
+uvicorn
