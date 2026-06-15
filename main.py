@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import json
 from jsonschema import ValidationError, validate
 from fastapi import FastAPI , HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+
 
 
 load_dotenv()
@@ -12,6 +14,19 @@ app = FastAPI(
     title = "AI Notes Generator",
     version = "1.0.0"
 )
+
+origins = [
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # GET, POST, PUT, DELETE, etc.
+    allow_headers=["*"],  # Authorization, Content-Type, etc.
+)
+
 
 model = ChatGroq(
     model =  'llama-3.1-8b-instant'
