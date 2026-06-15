@@ -1,0 +1,77 @@
+{
+  "documentId": "string",
+  "title": "string",
+  "summary": "string",
+  "metadata": {
+    "topic": "string",
+    "author": "AI",
+    "version": "string"
+  },
+  "blocks": [
+    {
+      "id": "string",
+      "type": "heading",
+      "level": 1,
+      "text": "string"
+    },
+    {
+      "id": "string",
+      "type": "paragraph",
+      "content": "string"
+    },
+    {
+      "id": "string",
+      "type": "image",
+      "title": "string",
+      "description": "string",
+      "url": "string"
+    },
+    {
+      "id": "string",
+      "type": "chart",
+      "title": "string",
+      "chartType": "line|bar|pie|area|scatter",
+      "description": "string",
+      "data": {
+        "labels": [],
+        "datasets": [
+          {
+            "label": "string",
+            "values": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "string",
+      "type": "table",
+      "title": "string",
+      "columns": [],
+      "rows": [[]]
+    },
+    {
+      "id": "string",
+      "type": "code",
+      "language": "string",
+      "content": "string"
+    },
+    {
+      "id": "string",
+      "type": "quote",
+      "content": "string",
+      "author": "string"
+    },
+    {
+      "id": "string",
+      "type": "list",
+      "style": "ordered|unordered",
+      "items": []
+    }
+  ],
+  "references": [
+    {
+      "title": "string",
+      "url": "string"
+    }
+  ]
+}

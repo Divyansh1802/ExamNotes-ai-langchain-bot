@@ -1,0 +1,15 @@
+# LangChain Core
+langchain
+langchain-core
+langchain-community
+
+# Environment Variable Management
+python-dotenv
+jsonschema
+
+# groq 
+langchain-groq
+groq
+
+#FastAPI
+fastapi
