@@ -117,13 +117,13 @@ Exam Type: {exam_type}
     """ ,
     input_variables = ['topic','level','exam_type'],
     partial_variables = {
-        "schema": schema
+        "schema": json.dumps(schema, indent=2)
     }
  
 )
 
 
-@app.get("/api/v1/aiNotes")
+@app.post("/api/v1/aiNotes")
 def generate_notes(
     topic: str, level: str, exam_type: str
 ):
@@ -139,23 +139,20 @@ def generate_notes(
     response = model.invoke(prompt)
     try:
         
-       data = json.loads(response.content)
-
+       content = response.content.strip()
+        if content.startswith("```"):
+            content = content.replace("```json", "").replace("```", "").strip()
+            
+        data = json.loads(content)
+        
+        if "data" in data:
+            data = data["data"]
+            
         validate(
            instance= data,
-           schema= schema
-       )
-
-       #return {
-           #"success": True,
-          # "message": "Notes generated successfully",
-           #"data": data
-       #}
-       if "data" in data:
-          data = data["data"]
-
-       return  data
-   
+           schema= schema )
+        
+        return  data
    
     except json.JSONDecodeError as e:
         raise HTTPException(
@@ -166,11 +163,10 @@ def generate_notes(
     except ValidationError as e:
        raise HTTPException(
             status_code=500,
-            detail="Schema validation failed"
+            detail=f"Schema validation failed: {e.message}"
         )
         
     except Exception as e:
-        print(e.message)
         raise HTTPException(
             status_code=500,
             detail=str(e)
