@@ -151,6 +151,9 @@ def generate_notes(
           # "message": "Notes generated successfully",
            #"data": data
        #}
+       if "data" in data:
+          data = data["data"]
+
        return data
    
    
