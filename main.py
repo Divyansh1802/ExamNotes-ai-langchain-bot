@@ -16,7 +16,7 @@ app = FastAPI(
 )
 
 origins = [
-    "http://localhost:3000"
+    "https://examnotes-ai-frontend.onrender.com"
 ]
 
 app.add_middleware(
