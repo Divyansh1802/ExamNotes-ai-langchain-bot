@@ -146,11 +146,12 @@ def generate_notes(
            schema= schema
        )
 
-       return {
-           "success": True,
-           "message": "Notes generated successfully",
-           "data": data
-       }
+       #return {
+           #"success": True,
+          # "message": "Notes generated successfully",
+           #"data": data
+       #}
+       return data
    
    
     except json.JSONDecodeError as e:
