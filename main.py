@@ -123,7 +123,7 @@ Exam Type: {exam_type}
 )
 
 
-@app.post("/api/v1/aiNotes")
+@app.get("/api/v1/aiNotes")
 def generate_notes(
     topic: str, level: str, exam_type: str
 ):
