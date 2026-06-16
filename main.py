@@ -154,7 +154,7 @@ def generate_notes(
        if "data" in data:
           data = data["data"]
 
-       return  {"test": "hello"}
+       return  data
    
    
     except json.JSONDecodeError as e:
