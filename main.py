@@ -140,19 +140,21 @@ def generate_notes(
     try:
         
        content = response.content.strip()
-        if content.startswith("```"):
+       if content.startswith("```"):
             content = content.replace("```json", "").replace("```", "").strip()
-            
-        data = json.loads(content)
-        
-        if "data" in data:
+           
+       data = json.loads(content)
+       
+       if "data" in data:
             data = data["data"]
             
-        validate(
+       validate(
            instance= data,
-           schema= schema )
+           schema= schema 
+        )
         
-        return  data
+       return  data
+   
    
     except json.JSONDecodeError as e:
         raise HTTPException(
