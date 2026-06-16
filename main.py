@@ -33,7 +33,7 @@ model = ChatGroq(
 )
 
 with open("json_schema.json","r",encoding="utf-8") as f:
-    schema = f.read()
+    schema = json.load(f)
 
 template = PromptTemplate(
     template= """
@@ -141,6 +141,10 @@ def generate_notes(
         
        data = json.loads(response.content)
 
+        validate(
+           instance= data,
+           schema= schema
+       )
 
        return {
            "success": True,
@@ -150,14 +154,12 @@ def generate_notes(
    
    
     except json.JSONDecodeError as e:
-        print(e.message)
         raise HTTPException(
             status_code=500,
             detail="LLM returned invalid JSON."
         )
 
     except ValidationError as e:
-       print(e.message)
        raise HTTPException(
             status_code=500,
             detail="Schema validation failed"
